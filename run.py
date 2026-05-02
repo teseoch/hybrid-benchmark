@@ -38,21 +38,22 @@ def make_json_data(mesh_path: Path) -> dict:
 def run_single(mesh_path: Path):
     data = make_json_data(mesh_path)
 
-    # Create temp file manually (safer across platforms/HPC)
     fd, temp_path = tempfile.mkstemp(suffix=".json", prefix="polyfem_")
     try:
         with os.fdopen(fd, "w") as f:
             json.dump(data, f, indent=4)
 
-        cmd = [
-            EXECUTABLE,
-            "-j",
-            temp_path,
-        ]
+        cmd = [EXECUTABLE, "-j", temp_path]
+        print(" ".join(cmd), flush=True)
 
         subprocess.run(cmd, check=True)
 
-    finally:
+    except subprocess.CalledProcessError:
+        print(f"\nFAILED mesh: {mesh_path}", flush=True)
+        print(f"Keeping temp json: {temp_path}", flush=True)
+        raise
+
+    else:
         os.remove(temp_path)
 
 

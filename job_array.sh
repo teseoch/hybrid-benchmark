@@ -19,4 +19,4 @@ source /home/teseo/scratch/polyfem-env/bin/activate
 
 mkdir -p logs
 
-python run_mesh_batch.py all_meshes.txt
+python run_mesh_batch.py /home/teseo/scratch/prism/hybrid-benchmark/all_meshes.txt
