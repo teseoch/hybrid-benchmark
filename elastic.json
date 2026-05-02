@@ -6,6 +6,11 @@
             "isoparametric": true
         }
     },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        }
+    },
     "geometry": {
         "advanced": {
             "normalize_mesh": true
