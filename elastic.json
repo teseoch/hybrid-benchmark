@@ -1,0 +1,27 @@
+{
+    "space": {
+        "discr_order": 2,
+        "discr_orderq": 2,
+        "advanced": {
+            "isoparametric": true
+        }
+    },
+    "geometry": {
+        "advanced": {
+            "normalize_mesh": true
+        },
+        "mesh": "prism-pyramid.msh",
+        "surface_selection": 1
+    },
+    "materials": {
+        "type": "LinearElasticity",
+        "E": 2e9,
+        "nu": 0.3
+    },
+    "preset_problem": {
+        "type": "ElasticExact"
+    },
+    "output": {
+        "json": "sim.json"
+    }
+}
